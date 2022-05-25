@@ -66,8 +66,7 @@ var S3Helper = function () {
 
 					// Set or Modify original filename
 					key: function key(req, file, cb) {
-						var fileName = req.body.fileName;
-
+						var fileName = req.body.fileName ? req.body.fileName : 'File';
 						var fullPath = fileName + '/' + fileName + '-' + Date.now() + _path2.default.extname(file.originalname);
 						cb(null, fullPath);
 					},
@@ -77,8 +76,7 @@ var S3Helper = function () {
 					transforms: [{
 						id: 'toWebp',
 						key: function key(req, file, cb) {
-							var fileName = req.fileName;
-
+							var fileName = req.body.fileName ? req.body.fileName : 'File';
 							var fullPath = fileName + '/' + fileName + '}-' + Date.now() + '.webp';
 							cb(null, fullPath);
 						},
