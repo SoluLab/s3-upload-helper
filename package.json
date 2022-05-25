@@ -6,6 +6,11 @@
 	"scripts": {
 		"build": "babel src -d dist"
 	},
+	"homepage": "https://github.com/SoluLab/s3-upload-helper#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SoluLab/s3-upload-helper.git"
+	},
 	"keywords": [],
 	"author": "MD ASIF JAWED",
 	"license": "ISC",
