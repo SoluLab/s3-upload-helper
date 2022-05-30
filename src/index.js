@@ -6,24 +6,13 @@ import sharp from 'sharp';
 
 class S3Helper {
 	constructor(accessId, secretKey, s3BucketName, s3Region) {
-		this.s3 = null;
-		this.uploadFileS3 = null;
-		this.S3ExtractMeta = null;
-		this.accessId = accessId;
-		this.secretKey = secretKey;
-		this.bucketName = s3BucketName;
-		this.s3Region = s3Region;
-		this.init();
-	}
-
-	init() {
 		// S3 Configurarion
 		this.s3 = new aws.S3({
 			credentials: {
-				accessKeyId: this.accessId,
-				secretAccessKey: this.secretKey,
+				accessKeyId: accessId,
+				secretAccessKey: secretKey,
 			},
-			region: this.s3Region,
+			region: s3Region,
 		});
 
 		// Multer function for upload
@@ -32,7 +21,7 @@ class S3Helper {
 			storage: multerS3({
 				s3: this.s3,
 				acl: 'public-read',
-				bucket: this.bucketName,
+				bucket: s3BucketName,
 				// Metadata for putting field name
 				metadata: (req, file, cb) => {
 					cb(null, { fieldName: file.fieldname });

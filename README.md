@@ -1,17 +1,18 @@
-# S3 Uplod Library
-
+# <center>S3 Uplod Library</center>
 ---
 
 ## Install
+---
 
-To use the package, just do the standard
+<strong>To use the package, just do the standard</strong>
 
     $ npm install --save s3-upload-helper
 
 
 ## Startup
+---
 
-* CommonJS
+* <strong>CommonJS</strong>
 
 ```js
 
@@ -31,6 +32,9 @@ const s3 = new S3Helper('accessId', 'secretKey', 's3BucketName', 's3Region');
 ```
 
 ## Usage
+---
+
+* <strong>uploadFileS3</strong>
 
 ```js
 // use it as a middleware 
@@ -48,6 +52,12 @@ router.post('/upload-file', s3.uploadFileS3, (req, res) => {
 	}
 	res.status(500).send({ errMsg: 'Something went wrong, file not uploaded' });
 });
+
+```
+
+* <strong>S3ExtractMeta</strong>
+
+```js
 
 router.post('/extract-file-metadata', (req, res) => {
 	// pass file as array of objects
