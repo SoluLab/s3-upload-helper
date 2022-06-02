@@ -56,7 +56,7 @@ class S3Helper {
 					},
 				],
 			}),
-		}).array('file');
+		});
 
 		// Extract meta data of file
 		this.S3ExtractMeta = (files) => {
