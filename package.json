@@ -1,10 +1,12 @@
 {
 	"name": "s3-upload-helper",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"description": "",
 	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
-		"build": "babel src -d dist"
+		"build": "npm run remove && babel src -d dist --copy-files",
+		"remove": "rimraf dist"
 	},
 	"homepage": "https://github.com/SoluLab/s3-upload-helper#readme",
 	"repository": {
@@ -18,13 +20,16 @@
 	"author": "MD ASIF JAWED",
 	"license": "ISC",
 	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-preset-es2015": "^6.24.1"
+		"@babel/cli": "^7.17.10",
+		"@babel/core": "^7.18.2",
+		"@babel/preset-env": "^7.18.2",
+		"rimraf": "^3.0.2"
 	},
 	"dependencies": {
 		"aws-sdk": "^2.1142.0",
 		"multer": "^1.4.4",
 		"multer-s3": "^2.10.0",
+		"node-zendesk": "^2.2.0",
 		"sharp": "^0.30.5"
 	}
 }
