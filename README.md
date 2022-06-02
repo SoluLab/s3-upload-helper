@@ -37,15 +37,24 @@ const s3 = new S3Helper('accessId', 'secretKey', 's3BucketName', 's3Region');
 * <strong>uploadFileS3</strong>
 
 ```js
-// use it as a middleware 
+/* It Returns a Multer instance that provides several methods for generating middleware, that process files uploaded in multipart/form-data format.
 
-// pass fileName inside req body for naming your file 
+* in the example below i have used .array() function that returns array or files in req.files
 
-// if not passed, file name would be File/File-current_time.extension
+* you can use other functions like .any, .fields .none and .single
 
-// file will be available on req.files as array of fles
+* all these functions returns a middleware that will process your file upload
 
-router.post('/upload-file', s3.uploadFileS3, (req, res) => {
+* all these functions returns uploaded file in different way you can go through multer docs for that
+
+* pass fileName inside req body for naming your file 
+
+* if not passed, file name would be "File/File-current_time.extension"
+
+* file will be available on req.files as array of fles
+
+*/
+router.post('/upload-file', s3.uploadFileS3.array('file'), (req, res) => {
 	const file = req.files; // Array of files
 	if (file) {
 		return res.status(200).send({ data: file });
